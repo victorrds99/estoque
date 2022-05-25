@@ -17,12 +17,24 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
+import com.futstack.entities.Produto;
 import com.futstack.entities.Restaurante;
 
 @Path("/rest")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 public class RestauranteResource {
+	
+	@Path("/produto")
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	public Produto produtos() {
+		Produto prod = new Produto();
+		prod.setId(1L);
+		prod.setNome("MacBook 17");
+		
+		return prod;
+	}
 	
 	@GET
 	public List<Restaurante> buscar(){
@@ -44,7 +56,9 @@ public class RestauranteResource {
 	@Transactional
 	public Response adicionar(Restaurante dto) {
 		dto.persist();
-		return Response.status(Status.CREATED).build();
+		Response retorno = Response.status(Status.CREATED).build();
+		return retorno;
+		
 	}
 	
 	@PUT
