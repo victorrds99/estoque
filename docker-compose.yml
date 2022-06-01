@@ -1,7 +1,7 @@
 version: "3.7"
 services:
-  postgres_cadastro: 
-   container_name: postgres_cadastro_ifood
+  estoque: 
+   container_name: estoque
    image: postgres:latest
    environment:
      POSTGRES_USER: cadastro
